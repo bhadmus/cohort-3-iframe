@@ -1,0 +1,21 @@
+name: Test Execution
+
+on: [push]
+
+jobs:
+  cypress-execution:
+      runs-on: ubuntu-latest
+
+      steps:
+      - name: Intialize node and Install NPM
+        uses: actions/checkout@v4
+
+      - name: Execute Cypress Script
+        uses: cypress-io/github-action@v6  
+
+      - name: Save Reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: reports
+          path: |
+            cypress/reports/html/
