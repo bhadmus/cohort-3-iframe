@@ -1,8 +1,14 @@
 const { defineConfig } = require("cypress");
-const { allureCypress } = require("allure-cypress/reporter");
 
 module.exports = defineConfig({
-  
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: 'iframe-tests',
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
+  },
   e2e: {
     viewportHeight: 960,
     viewportWidth: 1538,
@@ -13,7 +19,7 @@ module.exports = defineConfig({
       openMode: 1,
     },
     setupNodeEvents(on, config) {
-      allureCypress(on);
+      require('cypress-mochawesome-reporter/plugin')(on);
     },
   },
 });
