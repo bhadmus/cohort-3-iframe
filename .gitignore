@@ -5,4 +5,4 @@ node_modules/
 cypress/videos
 cypress/screenshots
 dist/
-reports/
+cypress/reports/
