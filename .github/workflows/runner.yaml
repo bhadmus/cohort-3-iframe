@@ -19,3 +19,10 @@ jobs:
           name: reports
           path: |
             cypress/reports/html/
+
+      - name: Trigger E2E test
+        uses: peter-evans/repository-dispatch@v2     
+        with:
+          token: ${{secrets.REPO_ACCESS_TOKEN}} 
+          repository: bhadmus/cohort3-bdd
+          event-type: trigger-test
